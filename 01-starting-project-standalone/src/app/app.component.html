@@ -1,0 +1,29 @@
+<app-header/>
+<main>
+    <ul id="users">
+        <!-- *ngFor=" let user of users" (you need import this from the angular/common)-->
+        <!-- must be with track expression-->
+        @for (user of users; track user.id){
+        <li>
+            <app-user [user]="user" 
+            [selected]= "user.id === selectedUserId"
+            (select)="onSelectUser($event)" /> 
+        </li>
+        }
+    </ul>
+
+    @if(selectedUserId){
+    <app-task [userId]="SelectedUser.id" [name]="SelectedUser.name" ></app-task>
+
+    }
+    @else {
+        <p id="fallback">Select a user to see the task</p>
+    }
+    <!--
+       <app-task *ngIf="SelectedUser; else fallback" [name]="SelectedUser!.name"/>
+       aka only if SelectedUser is not empty. property binding happens. 
+        <ng-template #fallback>
+        <p id="fallback">Select a user to see the task</p>
+        </ng-template>
+    -->
+</main>
