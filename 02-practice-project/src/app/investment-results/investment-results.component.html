@@ -1,0 +1,29 @@
+@if(!value)
+{
+    <p class="center">Please enter values to calculate</p>
+}
+@else {
+    <table>
+    <thead>
+        <tr>
+            <th>Year</th>
+            <th>Investment Value</th>
+            <th>Interest(Year)</th>
+            <th>Total Interest</th>
+            <th>Invested Capital</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(items of value; track items.year ){
+            <tr>
+                <td>{{items.year}}</td>
+                <td>{{items.valueEndOfYear | currency:'INR':'symbol' }}</td>
+                <td>{{items.interest | currency:'INR':'symbol' }}</td>
+                <td>{{items.totalInterest | currency:'INR':'symbol'}}</td>
+                <td>{{items.totalAmountInvested | currency:'INR':'symbol'}}</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+}

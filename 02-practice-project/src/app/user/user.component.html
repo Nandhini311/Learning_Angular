@@ -1,0 +1,48 @@
+<div>
+    <form (ngSubmit)="onSubmit()">
+        <!-- The form will not reload the page. Instead, the (ngSubmit) event will trigger a method in the component, allowing us to handle the data manually. -->
+        <!--we have created the form, now we need to store the data we get from the user-->
+        <div class="input-group">
+            <p>
+                <label for="initial-investment">Initial Investment</label>
+                <input 
+                    id="initial-investment"
+                    type="number" 
+                    name="initial-investment" 
+                    [(ngModel)]="data.initialInvestment"
+                />
+            </p>
+            <p>
+                <label for="annual-investment">Annual Investment</label>
+                <input 
+                    id="annual-investment"
+                    type="number" 
+                    name="annual-investment" 
+                    [(ngModel)]="data.annualInvestment"
+                />
+            </p>
+        </div>
+
+        <div class="input-group">
+            <p>
+                <label for="expected-return">Expected Return</label>
+                <input 
+                    type="number" 
+                    id="expected-return"
+                    name="expected-return" 
+                    [(ngModel)]="data.expectedReturn">
+            </p>
+            <p>
+                <label for="Duration">Duration</label>
+                <input
+                    id="duration" 
+                    type="number" 
+                    name="duration" 
+                    [(ngModel)]="data.duration">
+            </p>
+        </div>
+        <p>
+            <button type="submit" (click)="onSubmit()">CALCULATE</button>
+        </p>
+    </form>
+</div>

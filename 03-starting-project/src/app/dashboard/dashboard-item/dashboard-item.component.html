@@ -1,0 +1,10 @@
+<article>
+    <header>
+      <img [src]="image().src" alt="image().alt" />
+      <h2>{{title()}}</h2> 
+      <!--string interpolation-->
+    </header>
+    <ng-content></ng-content>
+</article>
+
+<!--to wrap it, we need to make it more configurable-->
