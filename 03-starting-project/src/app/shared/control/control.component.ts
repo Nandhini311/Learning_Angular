@@ -3,7 +3,11 @@ import {
   ElementRef, 
   input, 
   ViewEncapsulation, 
-  inject} from '@angular/core';
+  inject,
+  ContentChild,
+  contentChild,
+  afterRender, 
+  afterNextRender} from '@angular/core';
 
 @Component({
   selector: 'app-control',
@@ -27,12 +31,29 @@ import {
 })
 
 export class ControlComponent {
+
+  constructor(){
+    afterRender(()=>{
+      console.log('afterRender');
+    })
+
+    afterNextRender(()=>{
+      console.log('afterNextRender');
+    })
+  }
   //@HostBinding('class') className = 'control';
   //discouraged though, exists only for backward compatibility 
    label = input.required<string>();
    private el = inject(ElementRef);
    //ElementRef for referencing to any element on the page. 
    //by injecting this in to the component, angular gives you access to the host element of the component 
+   @ContentChild('input') private control?: ElementRef<HTMLInputElement | HTMLTextAreaElement>;
+
+   //now let's try using the function. 
+
+   private control_1 = 
+    contentChild<ElementRef<HTMLInputElement | HTMLTextAreaElement>>('input');
+  //must be accessed as a function - control_1()
 
   // @HostListener('click')
   onClick() {
