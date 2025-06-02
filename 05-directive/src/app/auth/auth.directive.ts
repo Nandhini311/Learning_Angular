@@ -6,6 +6,7 @@ import { AuthService } from './auth.service';
 @Directive({
   selector: '[appAuth]',
   standalone: true
+  
 })
 export class AuthDirective {
   userType = input.required<Permission>({ alias: 'appAuth' });

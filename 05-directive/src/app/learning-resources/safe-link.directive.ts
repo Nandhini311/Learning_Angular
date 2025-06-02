@@ -1,4 +1,5 @@
 import { Directive, ElementRef, input, inject } from "@angular/core";
+import { LogDirective } from "../log.directive";
 
 @Directive({
     selector: 'a[appSafeLink]',
@@ -6,7 +7,8 @@ import { Directive, ElementRef, input, inject } from "@angular/core";
     host:{
         '(click)': 'onConfirmLeavePage($event)'
         //telling angular to listen to the click event on the host element and sending the mouse event as input.
-    }
+    },
+    hostDirectives: [LogDirective] //now any safeLink will have this logging behaviour attached to them
 })
  //decorator must be added,
 export class SafeLinkDirective{

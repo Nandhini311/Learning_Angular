@@ -1,0 +1,18 @@
+<app-header></app-header>
+<app-employee-list
+  (edit)="onEdit($event)">
+</app-employee-list>
+<h2>Add Employee</h2>
+<app-employe-form></app-employe-form>
+
+@if(selectedEmployee){
+<div class="modal-overlay">
+  <div class="modal-content">
+    <button (click)="onCloseForm()">❌</button>
+    <app-employe-form
+      [existingEmployee]="selectedEmployee"
+      (formSubmit)="onFormSubmit()">
+    </app-employe-form>
+  </div>
+</div>
+}
