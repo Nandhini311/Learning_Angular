@@ -23,16 +23,15 @@ export class AppComponent {
 
    onEdit(emp: EmployeeData) {
     this.selectedEmployee = emp;
-    this.employeeservice.updateEmployee(emp);
   }
 
   onCloseForm(){
      this.selectedEmployee = null;
-  this.edit.emit(); 
+     this.edit.emit(); 
   }
 
   onFormSubmit(){
   this.selectedEmployee = null;
-  this.employeeservice.updateEmployee(this.newData);
+
   }
 }
